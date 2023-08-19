@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var todos = [
-        Todo(title: "Play Minecraft"),
+        Todo(title: "Play Minecraft", isCompleted: true),
         Todo(title: "Play Brawl Stars"),
         Todo(title: "Catch up with SAP videos"),
         Todo(title: "Play Mobile Legends"),
@@ -20,11 +20,19 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(todos) { todo in
-                Text(todo.title)
-                    .padding(8)
-                    .navigationTitle("Todos")
+            List($todos) { $todo in
+                HStack {
+                    Image (systemName: todo.isCompleted ? "checkmark.circle.fill"
+                           : "circle")
+                    .onTapGesture {
+                        todo.isCompleted.toggle()
+                    }
+                    Text(todo.title)
+                        .strikethrough(todo.isCompleted)
+                        .padding(8)
+                }
             }
+            .navigationTitle("Todos")
         }
     }
 }
@@ -34,3 +42,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
