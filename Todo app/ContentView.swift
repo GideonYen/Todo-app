@@ -15,7 +15,7 @@ struct ContentView: View {
         Todo(title: "Play Mobile Legends"),
         Todo(title: "Play Call Of Duty"),
         Todo(title: "Play Valorant"),
-        Todo(title: "Play Chess")
+        Todo(title: "Play Chess", subtitle: "Might need to check your eyes after this")
     ]
     
     var body: some View {
@@ -27,9 +27,14 @@ struct ContentView: View {
                     .onTapGesture {
                         todo.isCompleted.toggle()
                     }
-                    Text(todo.title)
-                        .strikethrough(todo.isCompleted)
-                        .padding(8)
+                    VStack(alignment: .leading) {
+                        Text(todo.title)
+                            .padding(1)
+                            .strikethrough(todo.isCompleted)
+                            Text(todo.subtitle)
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                    }
                 }
             }
             .navigationTitle("Todos")
