@@ -34,7 +34,7 @@ struct ContentView: View {
                         
                         if !todo.subtitle.isEmpty {
                             Text(todo.subtitle)
-                                    .font(.footnote)
+                                .font(.footnote)
                                 .foregroundColor(.gray)
                         }
                     }
