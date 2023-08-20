@@ -28,12 +28,15 @@ struct ContentView: View {
                         todo.isCompleted.toggle()
                     }
                     VStack(alignment: .leading) {
-                        Text(todo.title)
-                            .padding(1)
-                            .strikethrough(todo.isCompleted)
+                            Text(todo.title)
+                                .padding(1)
+                                .strikethrough(todo.isCompleted)
+                        
+                        if !todo.subtitle.isEmpty {
                             Text(todo.subtitle)
-                                .font(.footnote)
+                                    .font(.footnote)
                                 .foregroundColor(.gray)
+                        }
                     }
                 }
             }
