@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var todos = [
+    @State var todos = [
         Todo(title: "Play Minecraft", isCompleted: true),
         Todo(title: "Play Brawl Stars"),
         Todo(title: "Catch up with SAP videos"),
@@ -21,21 +21,25 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List($todos) { $todo in
-                HStack {
-                    Image (systemName: todo.isCompleted ? "checkmark.circle.fill"
-                           : "circle")
-                    .onTapGesture {
-                        todo.isCompleted.toggle()
-                    }
-                    VStack(alignment: .leading) {
-                            Text(todo.title)
-                                .padding(1)
-                                .strikethrough(todo.isCompleted)
-                        
-                        if !todo.subtitle.isEmpty {
-                            Text(todo.subtitle)
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                NavigationLink {
+                    Todo_Detail_View(todo: $todo)
+                } label: {
+                    HStack {
+                        Image (systemName: todo.isCompleted ? "checkmark.circle.fill"
+                               : "circle")
+                        .onTapGesture {
+                            todo.isCompleted.toggle()
+                        }
+                        VStack(alignment: .leading) {
+                                Text(todo.title)
+                                    .padding(1)
+                                    .strikethrough(todo.isCompleted)
+                            
+                            if !todo.subtitle.isEmpty {
+                                Text(todo.subtitle)
+                                    .font(.footnote)
+                                    .foregroundStyle(.gray)
+                            }
                         }
                     }
                 }
