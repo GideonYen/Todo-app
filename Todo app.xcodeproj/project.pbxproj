@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F2E4E912A98B9DC00194D40 /* NewTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2E4E902A98B9DC00194D40 /* NewTodoView.swift */; };
 		9F33F8812A90E03F00331D3F /* Todo_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33F8802A90E03F00331D3F /* Todo_appApp.swift */; };
 		9F33F8832A90E03F00331D3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F33F8822A90E03F00331D3F /* ContentView.swift */; };
 		9F33F8852A90E04100331D3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F33F8842A90E04100331D3F /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F2E4E902A98B9DC00194D40 /* NewTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoView.swift; sourceTree = "<group>"; };
 		9F33F87D2A90E03F00331D3F /* Todo app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F33F8802A90E03F00331D3F /* Todo_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_appApp.swift; sourceTree = "<group>"; };
 		9F33F8822A90E03F00331D3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 		9F33F8742A90E03F00331D3F = {
 			isa = PBXGroup;
 			children = (
+				9F2E4E902A98B9DC00194D40 /* NewTodoView.swift */,
 				9F9C06002A91F6A400E60D8F /* Todo Detail View.swift */,
 				9F33F87F2A90E03F00331D3F /* Todo app */,
 				9F33F87E2A90E03F00331D3F /* Products */,
@@ -146,6 +149,7 @@
 				9F33F8832A90E03F00331D3F /* ContentView.swift in Sources */,
 				9F9C06012A91F6A400E60D8F /* Todo Detail View.swift in Sources */,
 				9F33F88F2A90E37D00331D3F /* Todo.swift in Sources */,
+				9F2E4E912A98B9DC00194D40 /* NewTodoView.swift in Sources */,
 				9F33F8812A90E03F00331D3F /* Todo_appApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

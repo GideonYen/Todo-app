@@ -17,6 +17,7 @@ struct ContentView: View {
         Todo(title: "Play Valorant", color: .black),
         Todo(title: "Play Chess", subtitle: "", color: .black)
     ]
+    @State private var showNewTodoSheet = false
     
     var body: some View {
         NavigationStack {
@@ -50,14 +51,25 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showNewTodoSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showNewTodoSheet) {
+                NewTodoView(sheetTodoView: $todos)
+                    .presentationDetents([.medium, .large])
             }
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
-
