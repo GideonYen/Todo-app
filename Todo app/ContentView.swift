@@ -9,18 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @State var todos = [
-        Todo(title: "Play Minecraft", isCompleted: true),
-        Todo(title: "Play Brawl Stars"),
-        Todo(title: "Catch up with SAP videos"),
-        Todo(title: "Play Mobile Legends"),
-        Todo(title: "Play Call Of Duty"),
-        Todo(title: "Play Valorant"),
-        Todo(title: "Play Chess", subtitle: "Might need to check your eyes after this")
+        Todo(title: "Play Minecraft", color: .black),
+        Todo(title: "Play Brawl Stars", color: .black),
+        Todo(title: "Catch up with SAP videos", color: .black),
+        Todo(title: "Play Mobile Legends", color: .black),
+        Todo(title: "Play Call Of Duty", color: .black),
+        Todo(title: "Play Valorant", color: .black),
+        Todo(title: "Play Chess", subtitle: "", color: .black)
     ]
     
     var body: some View {
         NavigationStack {
-            List($todos) { $todo in
+            List($todos, editActions: .all) { $todo in
                 NavigationLink {
                     Todo_Detail_View(todo: $todo)
                 } label: {
@@ -31,9 +31,10 @@ struct ContentView: View {
                             todo.isCompleted.toggle()
                         }
                         VStack(alignment: .leading) {
-                                Text(todo.title)
-                                    .padding(1)
-                                    .strikethrough(todo.isCompleted)
+                            Text(todo.title)
+                                .foregroundStyle(todo.color)
+                                .padding(1)
+                                .strikethrough(todo.isCompleted)
                             
                             if !todo.subtitle.isEmpty {
                                 Text(todo.subtitle)
@@ -45,6 +46,11 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Todos")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+            }
         }
     }
 }
