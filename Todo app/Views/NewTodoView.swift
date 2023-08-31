@@ -11,6 +11,7 @@ struct NewTodoView: View {
     @Binding var sheetTodoView: [Todo]
     @State private var todoTitle = ""
     @State private var todoSubtitle = ""
+    @State private var todoColor = Color.black
     @Environment(\.dismiss) var goAway
     @State private var showAlert = false
     
@@ -19,15 +20,23 @@ struct NewTodoView: View {
             Section("Info") {
                 TextField("Title", text: $todoTitle)
                 TextField("Subtitle", text: $todoSubtitle)
+                    .foregroundStyle(.gray)
+                ColorPicker("🎨 Colour", selection: $todoColor)
             }
             Section("Actions") {
                 Button("Save") {
-                    let newTodo = Todo(title: todoTitle, subtitle: todoSubtitle, color: .black)
+                    let newTodo = Todo(title: todoTitle, subtitle: todoSubtitle, color: todoColor)
                     sheetTodoView.append(newTodo)
                     goAway()
                 }
                 Button("Cancel", role: .destructive) {
-                    showAlert = true
+                    if todoTitle != "" {
+                        showAlert = true
+                    } else if todoSubtitle != ""{
+                        showAlert = true
+                    } else{
+                        goAway()
+                    }
                 }
                 .alert("Are you sure? ", isPresented: $showAlert) {
                     Button("No",role: .cancel) { }
@@ -44,5 +53,7 @@ struct NewTodoView: View {
 struct NewTodoView_Previews: PreviewProvider {
     static var previews: some View {
         NewTodoView(sheetTodoView: .constant([]))
+        
     }
+    
 }

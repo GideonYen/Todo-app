@@ -6,7 +6,7 @@ struct Todo_Detail_View: View {
     
     var body: some View {
         Form {
-            TextField("Edi title", text: $todo.title)
+            TextField("Edit title", text: $todo.title)
             TextField("Edit description", text: $todo.subtitle)
                 .foregroundStyle(.gray)
             Toggle("Completed?", isOn: $todo.isCompleted)
@@ -18,11 +18,12 @@ struct Todo_Detail_View: View {
     }
 }
 
+
 struct Todo_Detail_View_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             Todo_Detail_View(todo:
-                    .constant(Todo(title: "", subtitle: "", color: .white))
+                    .constant(Todo(title: "", subtitle: "", color: .black))
             )
         }
     }
